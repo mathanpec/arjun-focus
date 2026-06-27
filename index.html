@@ -1,0 +1,874 @@
+<title>Focus Builder — Family Plan</title>
+<meta name="description" content="A 12-week structured family plan to build sustained focus and independent play for a 5.5-year-old.">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:           #F8F9F7;
+    --surface:      #FFFFFF;
+    --text:         #1E2A1E;
+    --text-muted:   #5C6B5C;
+    --accent:       #2D6A4F;
+    --accent-mid:   #52B788;
+    --accent-light: #D8F3DC;
+    --coral:        #E76F51;
+    --coral-light:  #FDEBD8;
+    --flag-green:   #2D6A4F;
+    --flag-red:     #B5373B;
+    --flag-red-bg:  #FDECEA;
+    --border:       #D6E4D6;
+    --rule:         #C8DBC8;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    line-height: 1.7;
+    padding: 0 1.25rem 4rem;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3.5rem 0 2.5rem;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-mid);
+    margin-bottom: 0.75rem;
+  }
+
+  .site-header h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2rem, 5vw, 2.9rem);
+    font-weight: normal;
+    line-height: 1.2;
+    text-wrap: balance;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+
+  .site-header h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.5rem;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-top: 1.25rem;
+  }
+
+  .header-meta span { display: flex; align-items: center; gap: 0.35rem; }
+
+  /* ── GOALS STRIP ── */
+  .goals-strip {
+    max-width: 760px;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .goal-cell {
+    background: var(--surface);
+    padding: 1.1rem 1.2rem;
+  }
+
+  .goal-cell .goal-num {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-mid);
+    margin-bottom: 0.35rem;
+  }
+
+  .goal-cell p {
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .content { max-width: 760px; margin: 0 auto; }
+
+  /* ── PHASE HEADER ── */
+  .phase-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin: 3rem 0 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .phase-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.25rem 0.6rem;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .phase-header h2 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.5rem;
+    font-weight: normal;
+    color: var(--text);
+    text-wrap: balance;
+  }
+
+  /* ── SECTION H3 ── */
+  h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.1rem;
+    font-weight: normal;
+    color: var(--accent);
+    margin: 2rem 0 0.75rem;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.4rem 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .card-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.9rem;
+  }
+
+  /* ── MATERIALS TABLE ── */
+  .table-wrap { overflow-x: auto; margin: 1rem 0; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  thead th {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: left;
+    padding: 0.5rem 0.9rem;
+    border-bottom: 2px solid var(--border);
+  }
+
+  tbody tr { border-bottom: 1px solid var(--bg); }
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody td {
+    padding: 0.7rem 0.9rem;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  tbody tr:nth-child(odd) td { background: var(--bg); }
+  tbody tr:nth-child(even) td { background: var(--surface); }
+
+  .cost { white-space: nowrap; color: var(--accent); font-weight: 600; }
+
+  .total-row td {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text);
+    border-top: 2px solid var(--border);
+    background: var(--accent-light) !important;
+    padding-top: 0.75rem;
+  }
+
+  /* ── SCRIPT BUBBLES ── */
+  .script-block {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 0.75rem 0;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .script-block cite {
+    display: block;
+    font-style: normal;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+
+  /* ── CALLOUT BOX ── */
+  .callout {
+    background: var(--coral-light);
+    border-left: 3px solid var(--coral);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    font-size: 0.92rem;
+  }
+
+  .callout strong { color: var(--coral); }
+
+  /* ── RULE CARDS ── */
+  .rule-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .rule-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-right: 0.6rem;
+    flex-shrink: 0;
+  }
+
+  .rule-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.6rem;
+  }
+
+  .rule-body { font-size: 0.9rem; color: var(--text); padding-left: 2.2rem; }
+  .rule-body p + p { margin-top: 0.4rem; }
+
+  /* ── PROGRESSION TABLE ── */
+  .progress-grid {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 0.88rem;
+    margin: 1rem 0;
+  }
+
+  .pg-cell {
+    background: var(--surface);
+    padding: 0.65rem 0.9rem;
+    line-height: 1.4;
+  }
+
+  .pg-head {
+    background: var(--bg);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .pg-label { font-weight: 600; color: var(--accent); white-space: nowrap; }
+
+  /* ── MILESTONE TABLE ── */
+  .milestone-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; margin: 1rem 0; }
+
+  .milestone-table th {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: left;
+    padding: 0.5rem 0.8rem;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .milestone-table td {
+    padding: 0.75rem 0.8rem;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+
+  .milestone-table tr:last-child td { border-bottom: none; }
+
+  .week-cell { font-weight: 700; white-space: nowrap; color: var(--text-muted); }
+
+  .green-flag {
+    background: var(--accent-light);
+    color: var(--flag-green);
+    font-size: 0.82rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  .red-flag {
+    background: var(--flag-red-bg);
+    color: var(--flag-red);
+    font-size: 0.82rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  /* ── PRINCIPLES ── */
+  .principles-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.75rem; }
+
+  .principles-list li {
+    display: flex;
+    gap: 0.9rem;
+    align-items: baseline;
+    font-size: 0.92rem;
+    padding: 0.7rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .principles-list li strong { color: var(--accent); min-width: 0; flex-shrink: 0; }
+
+  /* ── LOG EXAMPLE ── */
+  .log-example {
+    background: #1E2A1E;
+    color: #A8D5B5;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.82rem;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.75rem 0;
+    overflow-x: auto;
+    line-height: 1.8;
+  }
+
+  .log-example .comment { color: #52B788; }
+
+  /* ── FRIDGE PRINT ── */
+  .fridge-box {
+    background: var(--surface);
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    margin: 1.5rem 0;
+  }
+
+  .fridge-box .fridge-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  /* ── DURATION LADDER ── */
+  .duration-ladder {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.6rem;
+    margin: 0.75rem 0 1.25rem;
+  }
+
+  .ladder-step {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.8rem 0.75rem;
+    text-align: center;
+  }
+
+  .ladder-weeks { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.2rem; }
+  .ladder-time { font-size: 1.4rem; font-weight: 700; color: var(--accent); line-height: 1; }
+  .ladder-min { font-size: 0.7rem; color: var(--text-muted); }
+
+  /* ── WITHDRAWAL STEPS ── */
+  .withdrawal-steps { display: flex; flex-direction: column; gap: 0.5rem; margin: 0.75rem 0; }
+
+  .ws-row {
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed var(--border);
+  }
+
+  .ws-row:last-child { border-bottom: none; }
+  .ws-weeks { font-weight: 700; color: var(--accent); min-width: 5.5rem; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    max-width: 760px;
+    margin: 4rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .goals-strip { grid-template-columns: 1fr; }
+    .duration-ladder { grid-template-columns: repeat(2, 1fr); }
+    .progress-grid { grid-template-columns: auto 1fr; }
+    .pg-cell:nth-child(3), .pg-head:nth-child(3) { display: none; }
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .fridge-box { break-inside: avoid; }
+    .card { break-inside: avoid; }
+  }
+</style>
+
+<!-- HEADER -->
+<header class="site-header">
+  <p class="eyebrow">Family Reference Guide · June 2026</p>
+  <h1>Building <em>Focus</em> — A 12-Week Plan</h1>
+  <p style="font-size:1.05rem; color:var(--text-muted); max-width:560px; text-wrap:balance; line-height:1.6;">
+    A practical, family-wide routine for helping our 5-and-a-half-year-old grow his attention muscle — step by step, everyone together.
+  </p>
+  <div class="header-meta">
+    <span>&#x1F4C5; Duration: 12 weeks</span>
+    <span>&#x1F468;&#x200D;&#x1F467; For: Parents + Grandparents</span>
+    <span>&#x23F1; Daily commitment: 15–45 min</span>
+  </div>
+</header>
+
+<!-- GOALS -->
+<div class="goals-strip" style="margin-top:2rem;">
+  <div class="goal-cell">
+    <p class="goal-num">Goal 1</p>
+    <p>15–20 minutes on a single activity without switching</p>
+  </div>
+  <div class="goal-cell">
+    <p class="goal-num">Goal 2</p>
+    <p>Complete multi-step tasks without quitting midway</p>
+  </div>
+  <div class="goal-cell">
+    <p class="goal-num">Goal 3</p>
+    <p>Work independently for 5–10 minutes without needing someone beside him</p>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="content">
+
+  <!-- PHASE 1 -->
+  <div class="phase-header">
+    <span class="phase-badge">Phase 1</span>
+    <h2>Setup — Week 1</h2>
+  </div>
+
+  <h3>1.1 Get the Right Materials</h3>
+  <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:0.75rem;">Current puzzles (24-piece) are too easy — done in 2 minutes. Upgrade difficulty level:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Why</th>
+          <th>Est. Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>48-piece puzzles</strong> (2–3)</td>
+          <td>Right challenge level — not too easy, not too hard</td>
+          <td class="cost">₹300–500</td>
+        </tr>
+        <tr>
+          <td><strong>100-piece puzzles</strong> (1–2)</td>
+          <td>Month 2–3 graduation target</td>
+          <td class="cost">₹400–600</td>
+        </tr>
+        <tr>
+          <td><strong>LEGO sets with instruction booklets</strong> (age 5–7)</td>
+          <td>Teaches following a sequence to a visible end — critical for multi-step task practice</td>
+          <td class="cost">₹800–1500</td>
+        </tr>
+        <tr>
+          <td><strong>Board games</strong>: UNO Junior, Dobble / Spot It</td>
+          <td>Builds sustained focus through the social play he already loves</td>
+          <td class="cost">₹500–800</td>
+        </tr>
+        <tr>
+          <td><strong>Dot-to-dot books</strong> (50–100 dots), maze books</td>
+          <td>Continuous, satisfying, clear completion point</td>
+          <td class="cost">₹200–400</td>
+        </tr>
+        <tr>
+          <td><strong>Simple craft kits</strong> (origami, clay)</td>
+          <td>Hands-on, multi-step, sensory engagement</td>
+          <td class="cost">₹200–400</td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2">One-time investment total</td>
+          <td class="cost">₹2,500–4,000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>1.2 Align All Caregivers</h3>
+  <p style="font-size:0.92rem;">Hold a single 20-minute family conversation — both parents and grandparents — to agree on three things:</p>
+  <ul style="margin:0.75rem 0 0 1.2rem; font-size:0.92rem; display:flex; flex-direction:column; gap:0.35rem;">
+    <li>The three goals above</li>
+    <li>The specific response scripts in this guide</li>
+    <li>That <strong>everyone responds the same way</strong> — one person giving in resets the progress</li>
+  </ul>
+
+  <h3>1.3 Make the Focus Star Chart Together</h3>
+  <div class="card">
+    <ul style="font-size:0.92rem; display:flex; flex-direction:column; gap:0.5rem; margin-left:1.1rem;">
+      <li>A simple chart on the wall — <strong>he helps make and decorate it</strong></li>
+      <li>He earns a star each time he completes a Focus Time activity</li>
+      <li>5 stars = a reward he chooses himself (park trip, small toy, picks dinner — <strong>not screen time</strong>)</li>
+      <li>Let him choose his first reward target — this gives him buy-in</li>
+    </ul>
+  </div>
+
+  <h3>1.4 Introduce the Concept to Him</h3>
+  <p style="font-size:0.92rem; margin-bottom:0.5rem;">Don't spring it on him. Explain using something he already loves:</p>
+  <div class="script-block">
+    <cite>Say to him</cite>
+    "You know how football players train every day to get stronger? We're going to do focus training — it makes your brain stronger. You'll do a fun activity every day, and when you finish it, you get a star. 5 stars and you pick a reward!"
+  </div>
+  <p style="font-size:0.88rem; color:var(--text-muted); margin-top:0.5rem;">Let him ask "why" — answer patiently. He needs to understand before he agrees.</p>
+
+
+  <!-- PHASE 2 -->
+  <div class="phase-header">
+    <span class="phase-badge">Phase 2</span>
+    <h2>Daily Structure — Weeks 2 to 8</h2>
+  </div>
+
+  <!-- PARENT TRACK -->
+  <h3>2.1 Parent Track — Focus Time (5:30–7:00 PM)</h3>
+  <p style="font-size:0.92rem; margin-bottom:1rem;">Parents alternate daily. Gradually increase duration and step back over 8 weeks:</p>
+
+  <div class="duration-ladder">
+    <div class="ladder-step">
+      <div class="ladder-weeks">Weeks 1–2</div>
+      <div class="ladder-time">10</div>
+      <div class="ladder-min">minutes</div>
+    </div>
+    <div class="ladder-step">
+      <div class="ladder-weeks">Weeks 3–4</div>
+      <div class="ladder-time">15</div>
+      <div class="ladder-min">minutes</div>
+    </div>
+    <div class="ladder-step">
+      <div class="ladder-weeks">Weeks 5–6</div>
+      <div class="ladder-time">18</div>
+      <div class="ladder-min">minutes</div>
+    </div>
+    <div class="ladder-step">
+      <div class="ladder-weeks">Weeks 7–8</div>
+      <div class="ladder-time">20</div>
+      <div class="ladder-min">minutes</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="card-title">How each Focus Time session works</p>
+
+    <p style="font-size:0.92rem; margin-bottom:0.75rem;"><strong>Step 1 — Set a visual timer.</strong> Use a sand timer or phone timer he can see. Visual countdowns reduce "how much longer?" anxiety.</p>
+
+    <p style="font-size:0.92rem; margin-bottom:0.5rem;"><strong>Step 2 — He chooses from 2–3 options</strong> you offer (not open-ended — too many choices causes paralysis):</p>
+    <div class="script-block" style="margin-bottom:0.75rem;">
+      <cite>Example</cite>
+      "Do you want to do the LEGO fire truck or the 48-piece animal puzzle?"
+    </div>
+
+    <p style="font-size:0.92rem; margin-bottom:0.5rem;"><strong>Step 3 — Gradually step back</strong> over the weeks:</p>
+    <div class="withdrawal-steps">
+      <div class="ws-row">
+        <span class="ws-weeks">Weeks 1–2</span>
+        <span>Stay beside him the full time. Encourage, but don't do it for him — just watch.</span>
+      </div>
+      <div class="ws-row">
+        <span class="ws-weeks">Weeks 3–4</span>
+        <span>Stay for the first 7 minutes, then say "I'll be right here at the table" and move 2 feet away.</span>
+      </div>
+      <div class="ws-row">
+        <span class="ws-weeks">Weeks 5–6</span>
+        <span>Stay for the first 5 minutes, then move to a nearby spot and do your own task — read a book, write something. Model focused behavior.</span>
+      </div>
+      <div class="ws-row">
+        <span class="ws-weeks">Weeks 7–8</span>
+        <span>Start him off for 2–3 minutes, then step away. Check in once midway with a thumbs-up — no words.</span>
+      </div>
+    </div>
+
+    <p style="font-size:0.92rem; margin-top:0.75rem; margin-bottom:0.5rem;"><strong>Step 4 — Celebrate specifically</strong> when he finishes:</p>
+    <div class="script-block" style="border-color: var(--accent-mid);">
+      <cite>Say this (specific, names the skill)</cite>
+      "You stuck with that puzzle for 15 whole minutes — that's focus power!"
+    </div>
+    <p style="font-size:0.85rem; color:var(--text-muted);">Not just "good job" — name what he did so he understands what he's building.</p>
+
+    <p style="font-size:0.92rem; margin-top:0.75rem;"><strong>Step 5 — He earns his star.</strong> Then the remaining 30–45 minutes is free play, park, or board games — his reward and your bonding time.</p>
+  </div>
+
+  <!-- GRANDPARENT TRACK -->
+  <h3>2.2 Grandparent Track — Afternoon Hours (1:45–5:30 PM)</h3>
+
+  <div class="fridge-box">
+    <p class="fridge-label">&#x1F4CB; Print this and put it on the fridge</p>
+
+    <div class="rule-card">
+      <div class="rule-title">
+        <span class="rule-number">1</span>
+        <span>The "First-Then" Rule</span>
+      </div>
+      <div class="rule-body">
+        <p>When he says "play with me" or "I'm bored":</p>
+        <div class="script-block" style="margin:0.5rem 0 0.6rem;">
+          <cite>Say this</cite>
+          "First you do [coloring / dot-to-dot / puzzle] for [X] minutes, then I'll play with you."
+        </div>
+        <p><strong>Set the timer</strong> — makes it objective, not a negotiation.</p>
+        <div class="progress-grid" style="margin-top:0.7rem;">
+          <div class="pg-cell pg-head pg-label">Weeks</div>
+          <div class="pg-cell pg-head">Minutes to ask for</div>
+          <div class="pg-cell pg-head">Note</div>
+          <div class="pg-cell pg-label">1–2</div>
+          <div class="pg-cell">5 minutes</div>
+          <div class="pg-cell">Start small, build habit</div>
+          <div class="pg-cell pg-label">3–4</div>
+          <div class="pg-cell">8 minutes</div>
+          <div class="pg-cell">He should manage this easily now</div>
+          <div class="pg-cell pg-label">5–8</div>
+          <div class="pg-cell">10 minutes</div>
+          <div class="pg-cell">Small independent stretch</div>
+        </div>
+        <p style="margin-top:0.6rem; color:var(--coral);"><strong>Important:</strong> When the timer rings, always follow through and play with him. Broken promises end the system.</p>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-title">
+        <span class="rule-number">2</span>
+        <span>Don't Rescue — Encourage</span>
+      </div>
+      <div class="rule-body">
+        <p>When he says "I can't do it" or "help me":</p>
+        <div class="script-block" style="margin:0.5rem 0 0.6rem;">
+          <cite>Say this</cite>
+          "Try one more piece. If you're still stuck after that, I'll give you a hint."
+        </div>
+        <p>Hints only — never do it for him.</p>
+        <div class="script-block" style="margin:0.5rem 0 0; background:var(--bg);">
+          <cite>Hint example (puzzle)</cite>
+          "What colour is this piece? Where do you see that colour in the picture?"
+        </div>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-title">
+        <span class="rule-number">3</span>
+        <span>TV Comes After, Not Before</span>
+      </div>
+      <div class="rule-body">
+        <p>He must complete at least one focus activity first — even a small one (a page of colouring, one dot-to-dot page). Then TV.</p>
+        <p style="margin-top:0.4rem; color:var(--text-muted); font-size:0.87rem;">TV is the reward, not the default.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEKENDS -->
+  <h3>2.3 Weekend Enhancement</h3>
+  <div class="card">
+    <ul style="font-size:0.92rem; display:flex; flex-direction:column; gap:0.8rem; margin-left:1.1rem;">
+      <li><strong>LEGO project across two days:</strong> Start on Saturday, leave on the table, finish Sunday. This builds "I can come back and complete" — a critical focus skill.</li>
+      <li><strong>Family board game (30 min):</strong> 2–3 rounds of UNO/Dobble together. Builds focus through the social engagement he craves.</li>
+      <li><strong>Cooking together:</strong> Simple recipes (dosa batter, mixing a cake). Multi-step, hands-on, and there's a delicious result at the end.</li>
+      <li><strong>Story creation:</strong> He tells a story, you write or draw it together. Continue the same story across weekends — builds sustained narrative thinking.</li>
+    </ul>
+  </div>
+
+
+  <!-- PHASE 3 -->
+  <div class="phase-header">
+    <span class="phase-badge">Phase 3</span>
+    <h2>Graduation — Weeks 9 to 12</h2>
+  </div>
+
+  <h3>3.1 Increase Complexity</h3>
+  <ul style="margin:0.75rem 0 0 1.2rem; font-size:0.92rem; display:flex; flex-direction:column; gap:0.4rem;">
+    <li>Move from 48-piece to <strong>100-piece puzzles</strong></li>
+    <li>Introduce LEGO sets that take <strong>2–3 sittings</strong> to complete</li>
+    <li>Add strategy board games: <strong>Guess Who, Connect 4</strong></li>
+    <li>Maze books with increasing difficulty</li>
+  </ul>
+
+  <h3>3.2 Build Independent Stretches</h3>
+  <p style="font-size:0.92rem; margin-bottom:0.5rem;"><strong>Target:</strong> 10 minutes of fully independent activity with no adult in the room.</p>
+  <ul style="margin:0 0 0 1.2rem; font-size:0.92rem; display:flex; flex-direction:column; gap:0.4rem;">
+    <li>Same timer system — door open, you in the next room</li>
+    <li>Weeks 9–10: 5 minutes alone → Weeks 11–12: 10 minutes alone</li>
+  </ul>
+
+  <h3>3.3 Reduce the Star Chart</h3>
+  <p style="font-size:0.92rem;">Move from "star every session" to "star for completing a whole puzzle/LEGO set." By week 12, the habit should be partially internalized — the chart becomes a nice-to-have, not the driver.</p>
+
+
+  <!-- SCRIPTS -->
+  <div class="phase-header">
+    <span class="phase-badge">Reference</span>
+    <h2>What to Say in Common Situations</h2>
+  </div>
+
+  <div class="script-block">
+    <cite>When he says "I'm bored"</cite>
+    "That's okay — bored means your brain is ready for a challenge. Pick one: maze book or LEGO?"
+  </div>
+  <div class="script-block">
+    <cite>When he says "Play with me" during his time</cite>
+    "I'll play with you in [X] minutes. You start, and when the timer rings I'll come see what you made."
+  </div>
+  <div class="script-block">
+    <cite>When he says "This is too hard"</cite>
+    "Which part is tricky? Show me." — Then give a hint, not the answer. "What if you tried the corner pieces first?"
+  </div>
+  <div class="script-block">
+    <cite>When he says "I don't want to"</cite>
+    "You get to pick which activity — puzzle, LEGO, or colouring. But Focus Time happens before [park / TV / play]. Which one do you want?"
+  </div>
+  <div class="script-block">
+    <cite>When he finishes too fast</cite>
+    "Wow, that was fast! Let's try the next level." — Always have a harder version ready. Never let "I finished" become an escape route.
+  </div>
+
+
+  <!-- MILESTONES -->
+  <div class="phase-header">
+    <span class="phase-badge">Track</span>
+    <h2>Milestones & Progress Check</h2>
+  </div>
+
+  <div class="table-wrap">
+    <table class="milestone-table">
+      <thead>
+        <tr>
+          <th>Timeframe</th>
+          <th>What to expect</th>
+          <th>Green flag ✓</th>
+          <th>Red flag — act on this</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="week-cell">Week 2</td>
+          <td style="font-size:0.85rem;">Accepts routine without major resistance</td>
+          <td><span class="green-flag">Does 10 min with parent beside him</span></td>
+          <td><span class="red-flag">Meltdowns every session, complete refusal</span></td>
+        </tr>
+        <tr>
+          <td class="week-cell">Week 4</td>
+          <td style="font-size:0.85rem;">Sustains 15 min, tolerates parent stepping back briefly</td>
+          <td><span class="green-flag">Finishes 48-piece puzzles, asks for more</span></td>
+          <td><span class="red-flag">Still can't do 10 min — no change from week 1</span></td>
+        </tr>
+        <tr>
+          <td class="week-cell">Week 8</td>
+          <td style="font-size:0.85rem;">Sustains 20 min, does 5 min independently</td>
+          <td><span class="green-flag">Starts 100-piece puzzles; plays board game 20 min</span></td>
+          <td><span class="red-flag">No progress beyond week 4 — consider scheduling developmental paediatrician</span></td>
+        </tr>
+        <tr>
+          <td class="week-cell">Week 12</td>
+          <td style="font-size:0.85rem;">20 min sustained, 10 min independent, sometimes initiates activities himself</td>
+          <td><span class="green-flag">Grandparents report he plays alone sometimes before asking</span></td>
+          <td><span class="red-flag">Zero independent play, constant "play with me" unchanged — proceed with professional screening</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Daily Log — Keep It Simple</h3>
+  <p style="font-size:0.92rem; margin-bottom:0.6rem;">One line per day in a notebook or phone note. This data will also be invaluable if you visit a specialist later:</p>
+  <div class="log-example">
+    <span class="comment">Date | Activity | Duration | Independent? | Notes</span><br>
+    Jun 28 | 48-piece puzzle | 12 min | Last 3 min alone | Said "I did it!" at the end<br>
+    Jun 29 | Dot-to-dot book | 8 min | No | Got up twice, came back<br>
+    Jun 30 | LEGO fire truck | 20 min | Last 5 min alone | First time at 20 min!
+  </div>
+
+
+  <!-- PRINCIPLES -->
+  <div class="phase-header">
+    <span class="phase-badge">Remember</span>
+    <h2>7 Key Principles</h2>
+  </div>
+
+  <ul class="principles-list">
+    <li><strong>Consistency beats intensity</strong> — 15 minutes daily for 3 months beats 1 hour occasionally.</li>
+    <li><strong>He chooses the activity, you set the structure</strong> — autonomy within a boundary, not free choice and not a command.</li>
+    <li><strong>All caregivers, same response</strong> — one person giving in resets the progress for everyone.</li>
+    <li><strong>Celebrate the process, not the result</strong> — "you focused for 15 minutes!" beats "you finished the puzzle."</li>
+    <li><strong>Never use Focus Time as punishment</strong> — it must feel like a positive routine, not a consequence.</li>
+    <li><strong>Progress is not linear</strong> — bad days are normal. Look at weekly trends, not daily results.</li>
+    <li><strong>Model focus yourself</strong> — when you step back, do your own task. Read a book, don't scroll your phone. He is watching.</li>
+  </ul>
+
+</main>
+
+<footer>
+  <span>Family Focus Plan · Started June 2026</span>
+  <span>Review progress at weeks 4, 8, and 12</span>
+</footer>
