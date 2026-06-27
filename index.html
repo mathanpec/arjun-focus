@@ -465,6 +465,239 @@
     .pg-cell:nth-child(3), .pg-head:nth-child(3) { display: none; }
   }
 
+  /* ── SCHEDULE NAV ── */
+  .schedule-nav {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+  }
+
+  .sched-tab {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    user-select: none;
+  }
+
+  .sched-tab.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  .sched-panel { display: none; }
+  .sched-panel.active { display: block; }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    padding-left: 5.5rem;
+    margin: 0.75rem 0 1.5rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 4.4rem;
+    top: 0.9rem;
+    bottom: 0.9rem;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .tl-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.45rem 0;
+    position: relative;
+  }
+
+  .tl-time {
+    position: absolute;
+    left: -5.5rem;
+    width: 4.8rem;
+    text-align: right;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    padding-top: 0.1rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .tl-dot {
+    position: absolute;
+    left: -1.18rem;
+    top: 0.55rem;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: var(--border);
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  .tl-dot.gp    { background: var(--accent-mid); }
+  .tl-dot.parent { background: var(--accent); }
+  .tl-dot.tv    { background: #B8C4B8; }
+  .tl-dot.free  { background: var(--coral); }
+  .tl-dot.sleep { background: #8CA8D4; }
+  .tl-dot.school { background: #C4A35A; }
+
+  .tl-block {
+    border-radius: 7px;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.88rem;
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .tl-block.gp     { background: var(--accent-light); border-left: 3px solid var(--accent-mid); }
+  .tl-block.parent { background: #E8F4EE; border-left: 3px solid var(--accent); }
+  .tl-block.tv     { background: #F3F5F3; border-left: 3px solid #B8C4B8; }
+  .tl-block.free   { background: var(--coral-light); border-left: 3px solid var(--coral); }
+  .tl-block.sleep  { background: #EEF2F9; border-left: 3px solid #8CA8D4; }
+  .tl-block.school { background: #FDF6E3; border-left: 3px solid #C4A35A; }
+  .tl-block.neutral { background: var(--bg); border-left: 3px solid var(--border); }
+
+  .tl-block strong { display: block; font-size: 0.82rem; margin-bottom: 0.1rem; }
+  .tl-block span   { font-size: 0.82rem; color: var(--text-muted); }
+
+  /* ── LEGEND ── */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.2rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .legend-item { display: flex; align-items: center; gap: 0.4rem; }
+  .legend-dot {
+    width: 0.6rem; height: 0.6rem; border-radius: 50%; flex-shrink: 0;
+  }
+
+  /* ── 12-WEEK PROGRESSION ── */
+  .week-progression {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0.75rem 0;
+  }
+
+  .wp-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .wp-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1.25rem;
+    background: var(--accent-light);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .wp-weeks {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    min-width: 5.5rem;
+  }
+
+  .wp-title {
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--text);
+  }
+
+  .wp-body {
+    padding: 0.85rem 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 2rem;
+    font-size: 0.88rem;
+  }
+
+  .wp-row { display: flex; flex-direction: column; gap: 0.1rem; }
+  .wp-row .label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+  .wp-row .value { color: var(--text); line-height: 1.4; }
+
+  .wp-activities {
+    grid-column: 1 / -1;
+    border-top: 1px dashed var(--border);
+    padding-top: 0.5rem;
+    margin-top: 0.1rem;
+  }
+
+  /* ── WEEKLY GRID ── */
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin: 0.75rem 0;
+  }
+
+  .wg-day {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .wg-day-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: center;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .wg-pill {
+    border-radius: 5px;
+    padding: 0.3rem 0.4rem;
+    font-size: 0.72rem;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .wg-pill.school  { background: #FDF6E3; color: #7A5C00; }
+  .wg-pill.gp      { background: var(--accent-light); color: var(--accent); }
+  .wg-pill.parent  { background: #E8F4EE; color: #1E5C3A; font-weight: 600; }
+  .wg-pill.free    { background: var(--coral-light); color: #A0401A; }
+  .wg-pill.music   { background: #F0EBF9; color: #5B3A8A; }
+  .wg-pill.football{ background: #FFF3E0; color: #B35A00; }
+  .wg-pill.lego    { background: #E3F0FF; color: #1A4A8A; }
+  .wg-pill.board   { background: #FFF0F5; color: #8A1A4A; }
+  .wg-pill.sleep   { background: #EEF2F9; color: #2A3F6A; }
+
+  @media (max-width: 600px) {
+    .wp-body { grid-template-columns: 1fr; }
+    .timeline { padding-left: 4.5rem; }
+    .tl-time { left: -4.5rem; width: 3.8rem; }
+    .week-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
   @media print {
     body { background: #fff; padding: 0; }
     .fridge-box { break-inside: avoid; }
@@ -504,6 +737,319 @@
 
 <!-- MAIN CONTENT -->
 <main class="content">
+
+  <!-- SCHEDULE SECTION -->
+  <div class="phase-header">
+    <span class="phase-badge">Schedule</span>
+    <h2>Day-by-Day Routine</h2>
+  </div>
+
+  <div class="schedule-nav" role="tablist">
+    <button class="sched-tab active" onclick="showTab('weekday')" role="tab">Weekday (Mon–Fri)</button>
+    <button class="sched-tab" onclick="showTab('weekend')" role="tab">Weekend (Sat–Sun)</button>
+    <button class="sched-tab" onclick="showTab('weekly')" role="tab">Full Week View</button>
+    <button class="sched-tab" onclick="showTab('progression')" role="tab">12-Week Progression</button>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#C4A35A;"></div> School / Class</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--accent-mid);"></div> Grandparent Focus</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--accent);"></div> Parent Focus Time</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--coral);"></div> Free Play / Park</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#8CA8D4;"></div> Sleep</div>
+  </div>
+
+  <!-- WEEKDAY PANEL -->
+  <div class="sched-panel active" id="tab-weekday">
+    <div class="timeline">
+      <div class="tl-row">
+        <span class="tl-time">8:35 AM</span>
+        <div class="tl-dot school"></div>
+        <div class="tl-block school"><strong>School bus</strong><span>Off to school — 9:30 AM classes start</span></div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-time">1:00 PM</span>
+        <div class="tl-dot school"></div>
+        <div class="tl-block school"><strong>School ends</strong><span>Bus back home</span></div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-time">1:45 PM</span>
+        <div class="tl-dot"></div>
+        <div class="tl-block neutral"><strong>Home — lunch &amp; wind-down</strong><span>Low-key time: eat, decompress after school</span></div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-time">2:30 PM</span>
+        <div class="tl-dot gp"></div>
+        <div class="tl-block gp"><strong>Grandparent Focus Activity</strong><span>"First [activity] for X minutes, then I'll play with you." Set the timer. Wks 1–2: 5 min → Wks 3–4: 8 min → Wks 5–8: 10 min</span></div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-time">2:45 PM</span>
+        <div class="tl-dot tv"></div>
+        <div class="tl-block tv"><strong>TV time (30–45 min)</strong><span>Only after focus activity is done — YouTube Kids curated playlist</span></div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-time">3:30 PM</span>
+        <div class="tl-dot free"></div>
+        <div class="tl-block free"><strong>Grandparent play / indoor free time</strong><span>Grandparents follow through on "then I'll play with you" — board games, storytelling, imaginative play</span></div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-time">5:30 PM</span>
+        <div class="tl-dot"></div>
+        <div class="tl-block neutral"><strong>Parent arrives home</strong><span>Short transition — he shows what he made / did today</span></div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-time">5:45 PM</span>
+        <div class="tl-dot parent"></div>
+        <div class="tl-block parent"><strong>★ Parent Focus Time</strong><span>Core daily session. He picks from 2–3 options. Visual timer on. Duration grows week by week (10 → 20 min). Parent gradually steps back.</span></div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-time">6:15 PM</span>
+        <div class="tl-dot free"></div>
+        <div class="tl-block free"><strong>Park / ground / free play with parent</strong><span>Reward time — runs, cycles, plays freely. On football days (3×/wk), this is replaced by football class.</span></div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-time">7:00 PM</span>
+        <div class="tl-dot gp"></div>
+        <div class="tl-block gp"><strong>Grandparent evening time</strong><span>Dinner, stories, wind-down. Calm activities only — no screens within 1 hr of sleep.</span></div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-time">8:00 PM</span>
+        <div class="tl-dot sleep"></div>
+        <div class="tl-block sleep"><strong>Sleep routine begins</strong><span>Lights out by 9 PM</span></div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Football days (3×/week when resumed):</strong> The 6:15 PM park slot becomes football class. Keep Parent Focus Time at 5:45 PM — do it before leaving for football, even if shorter. Don't skip it — consistency matters more than duration.
+    </div>
+  </div>
+
+  <!-- WEEKEND PANEL -->
+  <div class="sched-panel" id="tab-weekend">
+    <div class="timeline">
+      <div class="tl-row">
+        <span class="tl-time">9:00 AM</span>
+        <div class="tl-dot free"></div>
+        <div class="tl-block free"><strong>Free morning play</strong><span>Unstructured — let him lead. Builds independence naturally when not prompted.</span></div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-time">10:30 AM</span>
+        <div class="tl-dot school"></div>
+        <div class="tl-block school"><strong>Music class (Saturday only, 45 min)</strong><span>Structured external class — great for focus as a side-effect. On Sunday, this slot is free.</span></div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-time">12:00 PM</span>
+        <div class="tl-dot"></div>
+        <div class="tl-block neutral"><strong>Lunch + rest</strong><span>Quiet time after class</span></div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-time">2:00 PM</span>
+        <div class="tl-dot parent"></div>
+        <div class="tl-block parent"><strong>★ Weekend Focus Project</strong><span><strong>Saturday:</strong> Start the multi-day LEGO set. Get through as many steps as he naturally will.<br><strong>Sunday:</strong> Return to Saturday's LEGO and complete it. "I can come back and finish" is the skill being built.</span></div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-time">3:30 PM</span>
+        <div class="tl-dot free"></div>
+        <div class="tl-block free"><strong>Outdoor time</strong><span>Ground, park, cycling — high energy burn before the evening</span></div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-time">5:00 PM</span>
+        <div class="tl-dot parent"></div>
+        <div class="tl-block parent"><strong>★ Family Board Game session (30 min)</strong><span>2–3 rounds of UNO Junior / Dobble as a family. Builds focus through social play he loves. Story creation on alternate weekends (he narrates, you draw/write).</span></div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-time">6:00 PM</span>
+        <div class="tl-dot free"></div>
+        <div class="tl-block free"><strong>Family cooking (once a weekend)</strong><span>Simple recipe — mixing, rolling, stirring. Multi-step, hands-on, delicious result. Rotate: dosa batter, chapati rolling, cake mix.</span></div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-time">7:00 PM</span>
+        <div class="tl-dot gp"></div>
+        <div class="tl-block gp"><strong>Grandparent evening time + dinner</strong><span>Wind-down storytelling, review his week's star chart with him</span></div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-time">8:30 PM</span>
+        <div class="tl-dot sleep"></div>
+        <div class="tl-block sleep"><strong>Sleep</strong></div>
+      </div>
+    </div>
+    <div class="callout">
+      <strong>Weekend TV:</strong> More screen time is okay on weekends — but still only after the afternoon Focus Project is done. Same principle: TV is earned, not automatic.
+    </div>
+  </div>
+
+  <!-- FULL WEEK VIEW -->
+  <div class="sched-panel" id="tab-weekly">
+    <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:1rem;">A bird's-eye view of a typical week in Phase 2 (weeks 2–8). Parent Focus Time alternates between parents each evening.</p>
+    <div class="week-grid">
+      <div class="wg-day">
+        <div class="wg-day-label">Mon</div>
+        <div class="wg-pill school">School 9–1</div>
+        <div class="wg-pill gp">GP Focus 5 min</div>
+        <div class="wg-pill gp">TV (earned)</div>
+        <div class="wg-pill parent">★ Focus Time</div>
+        <div class="wg-pill football">Football</div>
+        <div class="wg-pill sleep">Sleep by 9</div>
+      </div>
+      <div class="wg-day">
+        <div class="wg-day-label">Tue</div>
+        <div class="wg-pill school">School 9–1</div>
+        <div class="wg-pill gp">GP Focus 5 min</div>
+        <div class="wg-pill gp">TV (earned)</div>
+        <div class="wg-pill parent">★ Focus Time</div>
+        <div class="wg-pill free">Park / play</div>
+        <div class="wg-pill sleep">Sleep by 9</div>
+      </div>
+      <div class="wg-day">
+        <div class="wg-day-label">Wed</div>
+        <div class="wg-pill school">School 9–1</div>
+        <div class="wg-pill gp">GP Focus 5 min</div>
+        <div class="wg-pill gp">TV (earned)</div>
+        <div class="wg-pill parent">★ Focus Time</div>
+        <div class="wg-pill football">Football</div>
+        <div class="wg-pill sleep">Sleep by 9</div>
+      </div>
+      <div class="wg-day">
+        <div class="wg-day-label">Thu</div>
+        <div class="wg-pill school">School 9–1</div>
+        <div class="wg-pill gp">GP Focus 5 min</div>
+        <div class="wg-pill gp">TV (earned)</div>
+        <div class="wg-pill parent">★ Focus Time</div>
+        <div class="wg-pill free">Park / play</div>
+        <div class="wg-pill sleep">Sleep by 9</div>
+      </div>
+      <div class="wg-day">
+        <div class="wg-day-label">Fri</div>
+        <div class="wg-pill school">School 9–1</div>
+        <div class="wg-pill gp">GP Focus 5 min</div>
+        <div class="wg-pill gp">TV (earned)</div>
+        <div class="wg-pill parent">★ Focus Time</div>
+        <div class="wg-pill football">Football</div>
+        <div class="wg-pill sleep">Sleep by 9</div>
+      </div>
+      <div class="wg-day">
+        <div class="wg-day-label">Sat</div>
+        <div class="wg-pill free">Free morning</div>
+        <div class="wg-pill music">Music class</div>
+        <div class="wg-pill lego">★ LEGO start</div>
+        <div class="wg-pill free">Outdoor</div>
+        <div class="wg-pill board">★ Board games</div>
+        <div class="wg-pill free">Cooking</div>
+        <div class="wg-pill sleep">Sleep by 9</div>
+      </div>
+      <div class="wg-day">
+        <div class="wg-day-label">Sun</div>
+        <div class="wg-pill free">Free morning</div>
+        <div class="wg-pill lego">★ LEGO finish</div>
+        <div class="wg-pill free">Outdoor</div>
+        <div class="wg-pill board">★ Story creation</div>
+        <div class="wg-pill free">Family time</div>
+        <div class="wg-pill sleep">Sleep by 9</div>
+      </div>
+    </div>
+    <p style="font-size:0.82rem; color:var(--text-muted); margin-top:0.5rem;">★ = focus-building activity that earns a star on the chart</p>
+  </div>
+
+  <!-- 12-WEEK PROGRESSION PANEL -->
+  <div class="sched-panel" id="tab-progression">
+    <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:1rem;">The daily routine stays the same throughout — only these specific elements change each phase.</p>
+
+    <div class="week-progression">
+
+      <div class="wp-block">
+        <div class="wp-header">
+          <span class="wp-weeks">Week 1</span>
+          <span class="wp-title">Setup — Buy materials, make the chart, introduce the concept</span>
+        </div>
+        <div class="wp-body">
+          <div class="wp-row"><span class="label">Your task this week</span><span class="value">Buy all materials · Make Focus Star chart with him · Hold family alignment meeting · Introduce "brain training" using football analogy</span></div>
+          <div class="wp-row"><span class="label">GP Focus Time</span><span class="value">Not started yet — just explain the plan to grandparents</span></div>
+          <div class="wp-row wp-activities"><span class="label">Activities to have ready</span><span class="value">48-piece puzzles · Dot-to-dot book · Coloring books · LEGO set (with booklet) · UNO Junior or Dobble</span></div>
+        </div>
+      </div>
+
+      <div class="wp-block">
+        <div class="wp-header">
+          <span class="wp-weeks">Weeks 2–3</span>
+          <span class="wp-title">Foundation — Build the habit, parent stays beside</span>
+        </div>
+        <div class="wp-body">
+          <div class="wp-row"><span class="label">Parent Focus Time</span><span class="value"><strong>10 minutes.</strong> Parent sits beside him throughout. Encourage, don't do it for him.</span></div>
+          <div class="wp-row"><span class="label">GP Focus Time</span><span class="value"><strong>5 minutes</strong> before TV or play each afternoon.</span></div>
+          <div class="wp-row"><span class="label">Parent withdrawal</span><span class="value">None yet — full presence, building trust in the routine</span></div>
+          <div class="wp-row wp-activities"><span class="label">Activities</span><span class="value">48-piece puzzles · Dot-to-dot books · Coloring (pattern-based, not just free-draw)</span></div>
+        </div>
+      </div>
+
+      <div class="wp-block">
+        <div class="wp-header">
+          <span class="wp-weeks">Weeks 4–5</span>
+          <span class="wp-title">Stretch — Longer duration, first step back</span>
+        </div>
+        <div class="wp-body">
+          <div class="wp-row"><span class="label">Parent Focus Time</span><span class="value"><strong>15 minutes.</strong> Stay for first 7 min, then say "I'll be right here at the table" and move 2 feet away.</span></div>
+          <div class="wp-row"><span class="label">GP Focus Time</span><span class="value"><strong>8 minutes</strong> before TV or play.</span></div>
+          <div class="wp-row"><span class="label">New this phase</span><span class="value">Introduce LEGO with instruction booklet — do a few steps together, then let him continue</span></div>
+          <div class="wp-row wp-activities"><span class="label">Activities</span><span class="value">48-piece puzzles · LEGO with booklet (guided) · Maze books · Dot-to-dot (harder, 100-dot)</span></div>
+        </div>
+      </div>
+
+      <div class="wp-block">
+        <div class="wp-header">
+          <span class="wp-weeks">Weeks 6–7</span>
+          <span class="wp-title">Distance — Parent models own focused task nearby</span>
+        </div>
+        <div class="wp-body">
+          <div class="wp-row"><span class="label">Parent Focus Time</span><span class="value"><strong>18 minutes.</strong> Stay for first 5 min, then move to a nearby chair and do your own task — read a book, write. Model focus.</span></div>
+          <div class="wp-row"><span class="label">GP Focus Time</span><span class="value"><strong>10 minutes</strong> before TV or play.</span></div>
+          <div class="wp-row"><span class="label">New this phase</span><span class="value">Start family board games (UNO / Dobble) as part of weekend routine</span></div>
+          <div class="wp-row wp-activities"><span class="label">Activities</span><span class="value">48-piece puzzles (he should be completing these comfortably) · LEGO (longer sequences) · Board games (weekends)</span></div>
+        </div>
+      </div>
+
+      <div class="wp-block">
+        <div class="wp-header">
+          <span class="wp-weeks">Week 8</span>
+          <span class="wp-title">Independence — Parent steps away, checks in once</span>
+        </div>
+        <div class="wp-body">
+          <div class="wp-row"><span class="label">Parent Focus Time</span><span class="value"><strong>20 minutes.</strong> Start him off for 2–3 min, then step away. Check in once midway with a thumbs-up — no words.</span></div>
+          <div class="wp-row"><span class="label">GP Focus Time</span><span class="value"><strong>10 minutes.</strong> Hold steady here — consistency matters now.</span></div>
+          <div class="wp-row"><span class="label">Milestone check</span><span class="value">Can he do 5 min alone? If yes — great progress. If not, don't panic — stay at week 7 level for another week.</span></div>
+          <div class="wp-row wp-activities"><span class="label">Activities</span><span class="value">48-piece puzzles independently · LEGO multi-step · Weekend LEGO spanning 2 days</span></div>
+        </div>
+      </div>
+
+      <div class="wp-block">
+        <div class="wp-header">
+          <span class="wp-weeks">Weeks 9–10</span>
+          <span class="wp-title">Complexity — Harder challenges, 5 min fully alone</span>
+        </div>
+        <div class="wp-body">
+          <div class="wp-row"><span class="label">Parent Focus Time</span><span class="value"><strong>20 minutes.</strong> Start him, step out of the room for 5 min (door open), return. Repeat.</span></div>
+          <div class="wp-row"><span class="label">New this phase</span><span class="value">Introduce <strong>100-piece puzzles</strong> · LEGO sets that take 2–3 sittings to complete</span></div>
+          <div class="wp-row"><span class="label">Strategy games</span><span class="value">Add Guess Who or Connect 4 — first games requiring thinking ahead, not just luck</span></div>
+          <div class="wp-row wp-activities"><span class="label">Activities</span><span class="value">100-piece puzzles · Multi-session LEGO · Guess Who / Connect 4 · Harder maze books</span></div>
+        </div>
+      </div>
+
+      <div class="wp-block">
+        <div class="wp-header">
+          <span class="wp-weeks">Weeks 11–12</span>
+          <span class="wp-title">Graduation — 10 min independently, habit mostly internalized</span>
+        </div>
+        <div class="wp-body">
+          <div class="wp-row"><span class="label">Parent Focus Time</span><span class="value"><strong>20 minutes.</strong> 10 min of this fully alone, no adult in the room.</span></div>
+          <div class="wp-row"><span class="label">Star Chart</span><span class="value">Move to "star per completed project" (whole puzzle, full LEGO set). Bigger goals, less frequent stars.</span></div>
+          <div class="wp-row"><span class="label">Watch for</span><span class="value">Does he ever start an activity on his own without being prompted? That's the real graduation milestone.</span></div>
+          <div class="wp-row wp-activities"><span class="label">Activities</span><span class="value">100-piece puzzles · Strategy board games · Complex LEGO · Origami / craft projects</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- END SCHEDULE SECTION -->
 
   <!-- PHASE 1 -->
   <div class="phase-header">
@@ -872,3 +1418,12 @@
   <span>Family Focus Plan · Started June 2026</span>
   <span>Review progress at weeks 4, 8, and 12</span>
 </footer>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.sched-panel').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelectorAll('.sched-tab').forEach(function(t) { t.classList.remove('active'); });
+    document.getElementById('tab-' + id).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+</script>
